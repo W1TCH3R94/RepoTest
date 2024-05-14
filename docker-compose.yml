@@ -19,6 +19,18 @@ services:
     environment:
       - PMA_HOST=db
       - PMA_PORT=3306
+  web-datos:
+    container_name: servidor-datos
+    volumes:
+      - ./www/src:/var/www/html/src
+      - ./www/public:/var/www/html/public
+    build:
+      context: .
+      dockerfile: ./www/Dockerfile
+    ports:
+      - 8000:80
 volumes:
   db-dump:
   mysql:
+  www:
+  # negocio:
