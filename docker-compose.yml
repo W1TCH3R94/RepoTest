@@ -29,8 +29,18 @@ services:
       dockerfile: ./www/Dockerfile
     ports:
       - 8000:80
+  web-negocio:
+    container_name: servidor-negocio
+    volumes:
+      - ./negocio/src:/var/www/html/src
+      - ./negocio/public:/var/www/html/public
+    build:
+      context: .
+      dockerfile: ./negocio/Dockerfile
+    ports:
+      - 9000:80
 volumes:
   db-dump:
   mysql:
   www:
-  # negocio:
+  negocio:
